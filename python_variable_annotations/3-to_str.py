@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-Module that gives the floor of a float.
+Module that give the representation of a float.
 """
-import math
 
 
 def to_str(n: float) -> str:
