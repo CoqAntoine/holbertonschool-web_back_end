@@ -4,9 +4,9 @@ Module that defines the concat function.
 """
 
 
-def concat(a: str, b: str) -> str:
+def concat(str1: str, str2: str) -> str:
     """
-    Return the concatenation of a and b.
+    Return the concatenation of str1 and str2.
     This function performs a basic concatenation.
     """
-    return a + b
+    return str1 + str2

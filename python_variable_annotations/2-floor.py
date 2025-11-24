@@ -4,9 +4,10 @@ Module that gives the floor of a float.
 """
 import math
 
-def floor(a: float) -> int:
+
+def floor(n: float) -> int:
     """
-    Return the floor of float a.
+    Return the floor of float n.
     This function return an int.
     """
-    return math.floor(a)
+    return math.floor(n)
