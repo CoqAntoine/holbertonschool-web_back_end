@@ -3,9 +3,8 @@
 This module provides a function that returns the sum of
 all floating-point numbers in a list.
 """
-
-
 from typing import List
+
 
 def sum_list(input_list: List[float]) -> float:
     """
