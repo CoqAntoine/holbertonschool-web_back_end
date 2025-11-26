@@ -1,33 +1,30 @@
 #!/usr/bin/env python3
-"""
-Run task_wait_random multiple times concurrently and return
-all resulting delays in ascending order (without using sort()).
-"""
+"""Module providing task_wait_n, an async function that launches
+multiple task_wait_random coroutines and returns their delays sorted."""
+
 import asyncio
 from typing import List
+
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
 async def task_wait_n(n: int, max_delay: int) -> List[float]:
     """
-    Execute task_wait_random n times concurrently.
-    Collect each delay and return them in ascending order.
+    Spawn task_wait_random n times and return the list of delays
+    in ascending order.
+
+    Args:
+        n (int): Number of tasks to run.
+        max_delay (int): Maximum delay for each task.
+
+    Returns:
+        List[float]: A sorted list containing all the delays.
     """
-    # Create all tasks
+    # Create a list of tasks
     tasks = [task_wait_random(max_delay) for _ in range(n)]
-    delays: List[float] = []
 
-    # Process tasks as they finish
-    for completed_task in asyncio.as_completed(tasks):
-        delay = await completed_task
+    # Run them concurrently and gather results
+    delays = await asyncio.gather(*tasks)
 
-        # Insert delay in ascending order
-        for index, existing in enumerate(delays):
-            if delay < existing:
-                delays.insert(index, delay)
-                break
-        else:
-            # If no earlier spot found → append at end
-            delays.append(delay)
-
-    return delays
+    # Return the delays sorted
+    return sorted(delays)
