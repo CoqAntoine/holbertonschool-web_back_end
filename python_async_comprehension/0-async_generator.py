@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 import asyncio
+from typing import Generator
 import random
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
+async def async_generator() -> Generator[float, None, None]:
     """
     Asynchronously generate 10 random numbers.
 
