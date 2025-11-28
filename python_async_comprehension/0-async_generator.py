@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""A coroutine called async_generator"""
 import asyncio
 from typing import Generator
 import random
